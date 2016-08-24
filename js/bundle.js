@@ -79,11 +79,18 @@
 	    const currentPlayer = this.game.currentPlayer;
 	    this.game.playMove(pos);
 	    $square.text(currentPlayer);
+	    if (currentPlayer === "o" ) {
+	      $square.addClass("o");
+	    } else {
+	      $square.addClass("x");
+	    }
 	    $square.off("mouseenter mouseleave");
 	    $square.css("background-color", "white");
 
 	    if (this.game.isOver()) {
-	      alert(this.game.winner() + " is the winner! Please refresh to start a new game.");
+	      $('.' + this.game.winner()).removeClass("hide");
+	      this.$el.off("click");
+	      $("li").off("mouseenter mouseleave");
 	    }
 	  }
 
@@ -99,6 +106,7 @@
 	          const $square = $(event.currentTarget);
 	          $square.css("background-color", 'gray');
 	        });
+	        console.log($square);
 	        $row.append($square);
 	      }
 	      this.$el.append($row);

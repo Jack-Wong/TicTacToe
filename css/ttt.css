@@ -21,3 +21,11 @@ li {
   vertical-align: middle;
   text-align: center;
 }
+
+.x {
+  color: red;
+}
+
+.hide {
+  display: none;
+}
