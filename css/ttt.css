@@ -9,8 +9,15 @@
 ul{
   list-style-type: none;
   width: 190px;
+  margin: 0 auto;
 }
 
 h1 {
-  margin-left: 100px;
+  text-align: center;
+}
+
+li {
+  font-size: 60px;
+  vertical-align: middle;
+  text-align: center;
 }

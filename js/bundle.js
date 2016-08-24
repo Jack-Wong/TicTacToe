@@ -68,18 +68,23 @@
 
 	  bindEvents() {
 	    this.$el.on("click", event => {
-	      const currentTarget = event.currentTarget;
-	      const $currentTarget = $(currentTarget);
-	      console.log($currentTarget);
-	      this.makeMove($currentTarget);
+	      const target = event.target;
+	      const $target = $(target);
+	      this.makeMove($target);
 	    });
 	  };
 
 	  makeMove($square) {
-	    const pos = $square.attr("data-pos");
+	    const pos = $square.data("pos").split(",");
 	    const currentPlayer = this.game.currentPlayer;
 	    this.game.playMove(pos);
+	    $square.text(currentPlayer);
+	    $square.off("mouseenter mouseleave");
 	    $square.css("background-color", "white");
+
+	    if (this.game.isOver()) {
+	      alert(this.game.winner() + " is the winner! Please refresh to start a new game.");
+	    }
 	  }
 
 	  setupBoard() {
